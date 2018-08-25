@@ -58,9 +58,11 @@ module.exports = function (app) {
             var dtinicio = request.body.curso.dtinicio.split('-');
 
             var objDate = new Date(dtinicio[0], dtinicio[1] - 1, dtinicio[2]);
-
+           
             if (nome.trim().length == 0) {
+  
                 response.redirect('/menu');
+                   
             }
             else {
 
