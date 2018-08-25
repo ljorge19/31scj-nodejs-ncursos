@@ -48,6 +48,6 @@ load('models')
 app.use(error.notFound);
 app.use(error.serverError);
 
-app.listen(3001, function () {
+app.listen(3002, function () {
   console.log("Aplicação no ar.");
 });
