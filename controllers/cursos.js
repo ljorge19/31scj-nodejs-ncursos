@@ -24,7 +24,7 @@ module.exports = function (app) {
 
             var now = new Date();
 
-            var curso = { nome: "", duracao: "", dtinicio: dateFormat(now, "yyyy-mm-dd") };
+            var curso = { nome: "", duracao: "", dtinicio: dateFormat(now, "yyyy-mm-dd"), categoria: ""  };
 
             var params = { usuario: usuario, curso: curso, cursoid: '' };
 
@@ -39,7 +39,8 @@ module.exports = function (app) {
                 else {
                     var usuario = request.session.usuario;
 
-                    var curso = { nome: ecurso.nome, duracao: ecurso.duracao, dtinicio: dateFormat(ecurso.dtinicio, "yyyy-mm-dd") };
+                    var curso = { nome: ecurso.nome, duracao: ecurso.duracao, dtinicio: dateFormat(ecurso.dtinicio, "yyyy-mm-dd"), 
+                                  categoria: ecurso.categoria };
 
                     var params = { usuario: usuario, curso: curso, cursoid: ecurso._id };
                     response.render('cursos/formCurso', params);
@@ -56,6 +57,7 @@ module.exports = function (app) {
             var nome = request.body.curso.nome;
             var duracao = request.body.curso.duracao;
             var dtinicio = request.body.curso.dtinicio.split('-');
+            var categoria = request.body.curso.categoria;
 
             var objDate = new Date(dtinicio[0], dtinicio[1] - 1, dtinicio[2]);
            
@@ -68,7 +70,7 @@ module.exports = function (app) {
 
                 if (cursoid.trim().length == 0) {
                     //Salva novo curso
-                    var curso = { nome: nome, duracao: duracao, dtinicio: objDate }
+                    var curso = { nome: nome, duracao: duracao, dtinicio: objDate, categoria : categoria }
                     Curso.create(curso, function (erro, curso) {
                         if (erro) {
                             //response.redirect('/novocurso');
@@ -92,6 +94,7 @@ module.exports = function (app) {
                             curso.nome = nome;
                             curso.duracao = duracao;
                             curso.dtinicio = objDate;
+                            curso.categoria = categoria;
         
                             curso.save(function(erro) {
                                 if (erro) {

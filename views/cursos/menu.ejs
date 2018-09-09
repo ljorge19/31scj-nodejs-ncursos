@@ -50,6 +50,7 @@
                         <th scope="col">Curso</th>
                         <th scope="col">Carga Horária</th>
                         <th scope="col">Data de Início</th>
+                        <th scope="col">Categoria</th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
@@ -59,6 +60,7 @@
                         <td><%= curso.nome %></td>
                         <td><%= curso.duracao %></td>
                         <td><%= curso.dtinicio %></td>
+                        <td><%= curso.categoria %></td>
                         <td>
                             <a href="/editcurso?id=<%= curso._id %>"><img alt="Editar" src="/images/edit.png"></a>&nbsp;
                             <a href="/deletecurso?id=<%= curso._id %>"><img alt="Excluir" src="/images/delete.png"></a>
