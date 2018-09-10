@@ -25,7 +25,7 @@
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" href="/menu">Home
-                            
+
                         </a>
                     </li>
                     <li class="nav-item active">
@@ -34,11 +34,12 @@
                         </a>
                     </li>
                 </ul>
-                
+
             </div>
 
             <span class="navbar-text">
-                Bem-vindo, <%- usuario.nome %>
+                Bem-vindo,
+                <%- usuario.nome %>
             </span>
             <a class="navbar-text nav-item nav-link" href="/logout">Logout</a>
         </nav>
@@ -47,7 +48,7 @@
     <main role="main" class="container">
         <form action="/salvarcurso" method="POST">
             <input type="hidden" id="inputId" name="cursoid" value="<%= cursoid %>">
-                    
+
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="inputNome">Curso</label>
@@ -65,34 +66,66 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="inputSenha">Data de Início</label>
-                    <input type="date" class="form-control" id="inputDtinicio" placeholder="Início" name="curso[dtinicio]" value="<%= curso.dtinicio %>" min="2000-01-02"><br><br>
+                    <input type="date" class="form-control" id="inputDtinicio" placeholder="Início" name="curso[dtinicio]" value="<%= curso.dtinicio %>"
+                        min="2000-01-02">
+                    <br>
+                    <br>
                     <!-- <input type="text" class="form-control" id="inputSenha" placeholder="Início" name="curso[dtinicio]" value="<%= curso.dtinicio %>"> -->
                 </div>
             </div>
 
             <div class="form-row">
-            <div class="form-group col-md-6">
-                <select id="categoria" class="form-control" name="curso[categoria]" value="<%= curso.categoria %>" >
-                    <option value="">Selecione uma categoria</option>
-                    <option value="Desenvolvimento">Desenvolvimento</option>
-                    <option value="Design">Design</option>
-                    <option value="Infraestrutura" >Infraestrutura</option>
-                    <option value="Redes" >Redes</option>
-                  </select>
-              </div>
+                <div class="form-group col-md-6">
+                    <select id="categoria" class="form-control" name="curso[categoria]" value="<%= curso.categoria %>">
+                        <% if (curso.categoria == "") { %>
+                            <option value="">Selecione uma categoria</option>
+                            <% } %>
+
+                        <% if (curso.categoria == "Desenvolvimento") { %>
+                             <option value="Desenvolvimento" selected>Desenvolvimento</option>
+                        <% }else{ %>
+                             <option value="Desenvolvimento">Desenvolvimento</option>
+                        <% } %>
+
+                        <% if (curso.categoria == "Design") { %>
+                             <option value="Design" selected>Design</option>
+                        <% }else{ %>
+                             <option value="Design">Design</option>
+                        <% } %>
+
+                        <% if (curso.categoria == "Infraestrutura") { %>
+                             <option value="Infraestrutura" selected>Infraestrutura</option>
+                        <% }else{ %>
+                             <option value="Infraestrutura">Infraestrutura</option>
+                        <% } %>
+
+                        <% if (curso.categoria == "Redes") { %>
+                            <option value="Redes" selected>Redes</option>
+                        <%} else{ %>
+                            <option value="Redes">Redes</option>
+                        <% } %>
+
+
+
+
+
+
+
+                    </select>
+                </div>
             </div>
 
-             <br>
+            <br>
             </br>
             <br>
-        </br>
-    
+            </br>
+
 
             <div class="form-row">
                 <button class="btn btn-lg btn-primary btn-block col-md-6" type="submit">Salvar</button>
             </div>
             <br>
-        </br>
+            </br>
 
         </form>
     </main>
