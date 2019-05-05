@@ -18,7 +18,7 @@ module.exports = app;
 
 var mongoose = require('mongoose');
 //global.db = mongoose.connect('mongodb://AJ0263498B:27017/ncursos');
-global.db = mongoose.connect('mongodb://localhost:27017/banco_330542');
+global.db = mongoose.connect('mongodb://ljorge:Le353685*@ds151416.mlab.com:51416/pessoas');
 mongoose.connection.on('connected', function () {
   console.log('=====Conexão estabelecida com sucesso=====');
 });
